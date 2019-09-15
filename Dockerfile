@@ -149,12 +149,14 @@ RUN set -xe \
     && aria2c -q -x8 "https://va2.androidfilehost.com/dl/752XjjbkjzAkAg3qa2-Gbw/1568720390/${GZ20_Folder}/${GZ20}" \
          "https://de1.androidfilehost.com/dl/44fUSDRa3gKWCcAnz4MHMA/1568720389/${GZ20_Folder}/${GZ20}" \
          "https://qc3.androidfilehost.com/dl/752XjjbkjzAkAg3qa2-Gbw/1568720390/${GZ20_Folder}/${GZ20}" \
-    && echo "Parts downloading done!" \
+    && echo "Parts downloading done!"
+
+RUN set -xe \
     && pwd \
-    && ls -la \
-    && cat ${GZ00} ${GZ01} ${GZ02} ${GZ03} ${GZ04} ${GZ05} ${GZ06} ${GZ07} ${GZ08} ${GZ09} ${GZ10} \
-        ${GZ11} ${GZ12} ${GZ13} ${GZ14} ${GZ15} ${GZ16} ${GZ17} ${GZ18} ${GZ19} ${GZ20} \
-        | tar xzf - -C /home/alpine/project/
+    && df -hT \
+    && ls -la *.tar.gz* \
+    && cat *.gz00 *.gz01 *.gz02 *.gz03 *.gz04 *.gz05 *.gz06 *.gz07 *.gz08 *.gz09 *.gz10 *.gz11 *.gz12 *.gz13 *.gz14 *.gz15 *.gz16 *.gz17 *.gz18 *.gz19 *.gz20 \
+        | tar xzf -
 
 RUN set -xe \
     && ls -la \

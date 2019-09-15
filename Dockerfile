@@ -4,52 +4,6 @@ LABEL Description="This Alpine image is used as the Drive for ALPS Pie Source Co
 
 ENV LANG=C.UTF-8
 
-ARG PUID=1000
-ARG PGID=1000
-
-ARG GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00"
-ARG GZ01="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz01"
-ARG GZ02="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz02"
-ARG GZ03="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz03"
-ARG GZ04="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz04"
-ARG GZ05="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz05"
-ARG GZ06="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz06"
-ARG GZ07="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz07"
-ARG GZ08="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz08"
-ARG GZ09="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz09"
-ARG GZ10="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz10"
-ARG GZ11="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz11"
-ARG GZ12="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz12"
-ARG GZ13="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz13"
-ARG GZ14="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz14"
-ARG GZ15="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz15"
-ARG GZ16="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz16"
-ARG GZ17="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz17"
-ARG GZ18="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz18"
-ARG GZ19="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz19"
-ARG GZ20="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz20"
-ARG GZ00_Folder="1899786940962582780"
-ARG GZ01_Folder="1899786940962582796"
-ARG GZ02_Folder="1899786940962582820"
-ARG GZ03_Folder="1899786940962583142"
-ARG GZ04_Folder="1899786940962583143"
-ARG GZ05_Folder="1899786940962583181"
-ARG GZ06_Folder="1899786940962583395"
-ARG GZ07_Folder="1899786940962583597"
-ARG GZ08_Folder="1899786940962583594"
-ARG GZ09_Folder="1899786940962583593"
-ARG GZ10_Folder="1899786940962583595"
-ARG GZ11_Folder="1899786940962583596"
-ARG GZ12_Folder="1899786940962583443"
-ARG GZ13_Folder="1899786940962583392"
-ARG GZ14_Folder="1899786940962583527"
-ARG GZ15_Folder="1899786940962583205"
-ARG GZ16_Folder="1899786940962583204"
-ARG GZ17_Folder="1899786940962582827"
-ARG GZ18_Folder="1899786940962582828"
-ARG GZ19_Folder="1899786940962582829"
-ARG GZ20_Folder="1899786940962582244"
-
 RUN set -xe \
     && apk add -uU --no-cache --purge -uU \
         bash alpine-sdk sudo shadow \
@@ -57,13 +11,63 @@ RUN set -xe \
         unzip tar aria2
 
 RUN set -xe \
-    && groupadd --gid ${PGID} alpine \
-    && useradd --uid ${PUID} --gid alpine --shell /bin/bash --create-home alpine \
+    && groupadd --gid 1000 alpine \
+    && useradd --uid 1000 --gid alpine --shell /bin/bash --create-home alpine \
     && echo 'alpine ALL=NOPASSWD: ALL' >> /etc/shadow
 
+USER alpine
+
+VOLUME /home/alpine/
+WORKDIR /home/alpine/project/
+
 RUN set -xe \
-    && mkdir /alps \
-    && cd /alps/ \
+    && export GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
+    && export GZ01="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz01" \
+    && expprt GZ02="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz02" \
+    && export GZ03="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz03" \
+    && export GZ04="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz04" \
+    && export GZ05="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz05" \
+    && export GZ06="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz06" \
+    && export GZ07="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz07" \
+    && export GZ08="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz08" \
+    && export GZ09="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz09" \
+    && export GZ10="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz10" \
+    && export GZ11="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz11" \
+    && export GZ12="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz12" \
+    && export GZ13="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz13" \
+    && export GZ14="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz14" \
+    && export GZ15="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz15" \
+    && export GZ16="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz16" \
+    && export GZ17="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz17" \
+    && export GZ18="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz18" \
+    && export GZ19="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz19" \
+    && export GZ20="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz20"
+
+RUN set -xe \
+    && export GZ00_Folder="1899786940962582780" \
+    && export GZ01_Folder="1899786940962582796" \
+    && export GZ02_Folder="1899786940962582820" \
+    && export GZ03_Folder="1899786940962583142" \
+    && export GZ04_Folder="1899786940962583143" \
+    && export GZ05_Folder="1899786940962583181" \
+    && export GZ06_Folder="1899786940962583395" \
+    && export GZ07_Folder="1899786940962583597" \
+    && export GZ08_Folder="1899786940962583594" \
+    && export GZ09_Folder="1899786940962583593" \
+    && export GZ10_Folder="1899786940962583595" \
+    && export GZ11_Folder="1899786940962583596" \
+    && export GZ12_Folder="1899786940962583443" \
+    && export GZ13_Folder="1899786940962583392" \
+    && export GZ14_Folder="1899786940962583527" \
+    && export GZ15_Folder="1899786940962583205" \
+    && export GZ16_Folder="1899786940962583204" \
+    && export GZ17_Folder="1899786940962582827" \
+    && export GZ18_Folder="1899786940962582828" \
+    && export GZ19_Folder="1899786940962582829" \
+    && export GZ20_Folder="1899786940962582244"
+
+RUN set -xe \
+    && pwd \
     && echo "Downloading **gz00" \
     && aria2c -q -x8 "https://va1.androidfilehost.com/dl/frmyd1DsW8SWJRYkm_guWw/1568717354/${GZ00_Folder}/${GZ00}" \
          "https://de1.androidfilehost.com/dl/_nnZFojtSUGAKDf-TMHf9A/1568717350/${GZ00_Folder}/${GZ00}" \
@@ -148,21 +152,21 @@ RUN set -xe \
     && aria2c -q -x8 "https://va2.androidfilehost.com/dl/752XjjbkjzAkAg3qa2-Gbw/1568720390/${GZ20_Folder}/${GZ20}" \
          "https://de1.androidfilehost.com/dl/44fUSDRa3gKWCcAnz4MHMA/1568720389/${GZ20_Folder}/${GZ20}" \
          "https://qc3.androidfilehost.com/dl/752XjjbkjzAkAg3qa2-Gbw/1568720390/${GZ20_Folder}/${GZ20}" \
-    && echo "Parts downlpoading done!"
+    && echo "Parts downloading done!"
 
 RUN set -xe \
-    && cd /alps \
+    && pwd \
+    && ls -la \
     && cat ${GZ00} ${GZ01} ${GZ02} ${GZ03} ${GZ04} ${GZ05} ${GZ06} ${GZ07} ${GZ08} ${GZ09} ${GZ10} \
         ${GZ11} ${GZ12} ${GZ13} ${GZ14} ${GZ15} ${GZ16} ${GZ17} ${GZ18} ${GZ19} ${GZ20} \
         | tar xzf - -C /home/alpine/project/
 
 RUN set -xe \
-    && cd /alps \
+    && ls -la \
     && rm -rf *.tar.gz*
 
-USER alpine
-
-VOLUME /home/alpine/
-WORKDIR /home/alpine/project/
+RUN set -xe \
+    && cd /home/alpine/project/ \
+    && ls -la */
 
 ENTRYPOINT ["/bin/bash"]

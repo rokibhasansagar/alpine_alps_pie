@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v1
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v1
+      - name: Build the Docker image
+        env:
+          GITHUB_TOKEN: ${{ secrets.GitOAuth2 }}
+          Docker_User: ${{ secrets.Docker_User }}
+          Docker_Pass: ${{ secrets.Docker_Pass }}
+        run: |
+          docker login -u ${Docker_User} -p ${Docker_Pass}
+          docker build . --rm --file Dockerfile --compress --tag ${Docker_User}/alps_pie:latest
+          docker push ${Docker_User}/alps_pie:latest

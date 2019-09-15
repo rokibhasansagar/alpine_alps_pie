@@ -20,51 +20,48 @@ USER alpine
 VOLUME /home/alpine/
 WORKDIR /home/alpine/project/
 
-RUN set -xe \
-    && export GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
-    && export GZ01="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz01" \
-    && export GZ02="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz02" \
-    && export GZ03="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz03" \
-    && export GZ04="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz04" \
-    && export GZ05="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz05" \
-    && export GZ06="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz06" \
-    && export GZ07="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz07" \
-    && export GZ08="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz08" \
-    && export GZ09="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz09" \
-    && export GZ10="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz10" \
-    && export GZ11="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz11" \
-    && export GZ12="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz12" \
-    && export GZ13="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz13" \
-    && export GZ14="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz14" \
-    && export GZ15="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz15" \
-    && export GZ16="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz16" \
-    && export GZ17="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz17" \
-    && export GZ18="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz18" \
-    && export GZ19="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz19" \
-    && export GZ20="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz20"
-
-RUN set -xe \
-    && export GZ00_Folder="1899786940962582780" \
-    && export GZ01_Folder="1899786940962582796" \
-    && export GZ02_Folder="1899786940962582820" \
-    && export GZ03_Folder="1899786940962583142" \
-    && export GZ04_Folder="1899786940962583143" \
-    && export GZ05_Folder="1899786940962583181" \
-    && export GZ06_Folder="1899786940962583395" \
-    && export GZ07_Folder="1899786940962583597" \
-    && export GZ08_Folder="1899786940962583594" \
-    && export GZ09_Folder="1899786940962583593" \
-    && export GZ10_Folder="1899786940962583595" \
-    && export GZ11_Folder="1899786940962583596" \
-    && export GZ12_Folder="1899786940962583443" \
-    && export GZ13_Folder="1899786940962583392" \
-    && export GZ14_Folder="1899786940962583527" \
-    && export GZ15_Folder="1899786940962583205" \
-    && export GZ16_Folder="1899786940962583204" \
-    && export GZ17_Folder="1899786940962582827" \
-    && export GZ18_Folder="1899786940962582828" \
-    && export GZ19_Folder="1899786940962582829" \
-    && export GZ20_Folder="1899786940962582244"
+RUN GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
+    && GZ01="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz01" \
+    && GZ02="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz02" \
+    && GZ03="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz03" \
+    && GZ04="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz04" \
+    && GZ05="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz05" \
+    && GZ06="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz06" \
+    && GZ07="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz07" \
+    && GZ08="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz08" \
+    && GZ09="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz09" \
+    && GZ10="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz10" \
+    && GZ11="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz11" \
+    && GZ12="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz12" \
+    && GZ13="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz13" \
+    && GZ14="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz14" \
+    && GZ15="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz15" \
+    && GZ16="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz16" \
+    && GZ17="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz17" \
+    && GZ18="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz18" \
+    && GZ19="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz19" \
+    && GZ20="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz20" \
+    && GZ00_Folder="1899786940962582780" \
+    && GZ01_Folder="1899786940962582796" \
+    && GZ02_Folder="1899786940962582820" \
+    && GZ03_Folder="1899786940962583142" \
+    && GZ04_Folder="1899786940962583143" \
+    && GZ05_Folder="1899786940962583181" \
+    && GZ06_Folder="1899786940962583395" \
+    && GZ07_Folder="1899786940962583597" \
+    && GZ08_Folder="1899786940962583594" \
+    && GZ09_Folder="1899786940962583593" \
+    && GZ10_Folder="1899786940962583595" \
+    && GZ11_Folder="1899786940962583596" \
+    && GZ12_Folder="1899786940962583443" \
+    && GZ13_Folder="1899786940962583392" \
+    && GZ14_Folder="1899786940962583527" \
+    && GZ15_Folder="1899786940962583205" \
+    && GZ16_Folder="1899786940962583204" \
+    && GZ17_Folder="1899786940962582827" \
+    && GZ18_Folder="1899786940962582828" \
+    && GZ19_Folder="1899786940962582829" \
+    && GZ20_Folder="1899786940962582244"
 
 RUN set -xe \
     && pwd \

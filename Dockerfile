@@ -23,7 +23,7 @@ WORKDIR /home/alpine/project/
 RUN set -xe \
     && export GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
     && export GZ01="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz01" \
-    && expprt GZ02="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz02" \
+    && export GZ02="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz02" \
     && export GZ03="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz03" \
     && export GZ04="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz04" \
     && export GZ05="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz05" \
@@ -68,6 +68,7 @@ RUN set -xe \
 
 RUN set -xe \
     && pwd \
+    && df -hlT \
     && echo "Downloading **gz00" \
     && aria2c -q -x8 "https://va1.androidfilehost.com/dl/frmyd1DsW8SWJRYkm_guWw/1568717354/${GZ00_Folder}/${GZ00}" \
          "https://de1.androidfilehost.com/dl/_nnZFojtSUGAKDf-TMHf9A/1568717350/${GZ00_Folder}/${GZ00}" \

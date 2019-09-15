@@ -15,11 +15,6 @@ RUN set -xe \
     && useradd --uid 1000 --gid alpine --shell /bin/bash --create-home alpine \
     && echo 'alpine ALL=NOPASSWD: ALL' >> /etc/shadow
 
-USER alpine
-
-VOLUME /home/alpine/
-WORKDIR /home/alpine/project/
-
 ENV \
     GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
     GZ01="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz01" \
@@ -55,6 +50,8 @@ ENV \
     GZ20_Folder="1899786940962582244"
 
 RUN set -xe \
+    && mkdir -p /alps \
+    && cd /alps/ \
     && echo "Downloading part.. gz00" \
     && aria2c -q -x8 "https://va1.androidfilehost.com/dl/frmyd1DsW8SWJRYkm_guWw/1568717354/${GZ00_Folder}/${GZ00}" \
         "https://de1.androidfilehost.com/dl/_nnZFojtSUGAKDf-TMHf9A/1568717350/${GZ00_Folder}/${GZ00}" \
@@ -144,16 +141,25 @@ RUN set -xe \
 RUN set -xe \
     && pwd \
     && df -hT \
+    && cd /alps/ \
     && ls -la *.tar.gz* \
     && cat *.gz00 *.gz01 *.gz02 *.gz03 *.gz04 *.gz05 *.gz06 *.gz07 *.gz08 *.gz09 *.gz10 *.gz11 *.gz12 *.gz13 *.gz14 *.gz15 *.gz16 *.gz17 *.gz18 *.gz19 *.gz20 \
         | tar xzf -
 
 RUN set -xe \
+    && cd /alps/ \
     && ls -la \
     && rm -rf *.tar.gz*
 
+USER alpine
+
+VOLUME /home/alpine/
+
+WORKDIR /home/alpine/project/
+
 RUN set -xe \
+    && mv /alps/ /home/alpine/project \
     && cd /home/alpine/project/ \
-    && ls -la */
+    && ls -la *
 
 ENTRYPOINT ["/bin/bash"]

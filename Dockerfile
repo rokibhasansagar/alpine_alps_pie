@@ -68,7 +68,7 @@ RUN set -xe \
 
 RUN set -xe \
     && pwd \
-    && df -hlT \
+    && df -hT \
     && echo "Downloading **gz00" \
     && aria2c -q -x8 "https://va1.androidfilehost.com/dl/frmyd1DsW8SWJRYkm_guWw/1568717354/${GZ00_Folder}/${GZ00}" \
          "https://de1.androidfilehost.com/dl/_nnZFojtSUGAKDf-TMHf9A/1568717350/${GZ00_Folder}/${GZ00}" \

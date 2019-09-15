@@ -20,7 +20,8 @@ USER alpine
 VOLUME /home/alpine/
 WORKDIR /home/alpine/project/
 
-RUN GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
+RUN set -xe \
+    && GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
     && GZ01="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz01" \
     && GZ02="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz02" \
     && GZ03="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz03" \
@@ -61,9 +62,7 @@ RUN GZ00="t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz00" \
     && GZ17_Folder="1899786940962582827" \
     && GZ18_Folder="1899786940962582828" \
     && GZ19_Folder="1899786940962582829" \
-    && GZ20_Folder="1899786940962582244"
-
-RUN set -xe \
+    && GZ20_Folder="1899786940962582244" \
     && pwd \
     && df -hT \
     && echo "Downloading **gz00" \
@@ -150,9 +149,7 @@ RUN set -xe \
     && aria2c -q -x8 "https://va2.androidfilehost.com/dl/752XjjbkjzAkAg3qa2-Gbw/1568720390/${GZ20_Folder}/${GZ20}" \
          "https://de1.androidfilehost.com/dl/44fUSDRa3gKWCcAnz4MHMA/1568720389/${GZ20_Folder}/${GZ20}" \
          "https://qc3.androidfilehost.com/dl/752XjjbkjzAkAg3qa2-Gbw/1568720390/${GZ20_Folder}/${GZ20}" \
-    && echo "Parts downloading done!"
-
-RUN set -xe \
+    && echo "Parts downloading done!" \
     && pwd \
     && ls -la \
     && cat ${GZ00} ${GZ01} ${GZ02} ${GZ03} ${GZ04} ${GZ05} ${GZ06} ${GZ07} ${GZ08} ${GZ09} ${GZ10} \

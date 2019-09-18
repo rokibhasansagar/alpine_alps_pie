@@ -198,7 +198,8 @@ RUN set -xe \
     && rm *.tar.gz20 \
     && echo "Parts downloading done!" \
     && mv *.tar.gz00 t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz \
-    && echo -en "Final file is -- " && ls
+    && echo "Final file is -- " \
+    && ls -la *
 
 RUN set -xe \
     && pwd \

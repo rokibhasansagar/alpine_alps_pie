@@ -154,7 +154,7 @@ RUN set -xe \
     && echo "Appending part 14 onto 00" \
     && cat ${GZ14} >> ${GZ00} \
     && rm ${GZ14} \
-    && echo "Downloading part 15 \
+    && echo "Downloading part 15" \
     && aria2c -q -x12 "https://va2.androidfilehost.com/dl/kBi2yZAoUnXBKBB9mKlYJw/1568719820/${GZ15_Folder}/${GZ15}" \
         "https://de1.androidfilehost.com/dl/1ZXqF6OM8OGlfq9hydqsnw/1568719815/${GZ15_Folder}/${GZ15}" \
         "https://qc2.androidfilehost.com/dl/Yb08aNFfk37CcHH3w0UecQ/1568719816/${GZ15_Folder}/${GZ15}" \

@@ -234,7 +234,8 @@ RUN set -xe \
 
 RUN set -xe \
     && df -hT \
-    && ls -la * \
+    && cd /home/alpine/project/
+    && ls -la \
     && tar xzvf t-alps-release-p0.mp2-V3.100.mt6737-53-39-6580.tar.gz \
     && rm -rf *.tar.gz
 
